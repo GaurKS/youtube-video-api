@@ -1,0 +1,25 @@
+{
+  "name": "youtube-video-api",
+  "version": "1.0.0",
+  "description": "API to fetch latest videos sorted in reverse chronological order of their publishing date-time from YouTube for a given tag/search query in a paginated response.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaurKS/youtube-video-api.git"
+  },
+  "author": "Gaurav Shah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GaurKS/youtube-video-api/issues"
+  },
+  "homepage": "https://github.com/GaurKS/youtube-video-api#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.0",
+    "nodemon": "^2.0.20"
+  }
+}
