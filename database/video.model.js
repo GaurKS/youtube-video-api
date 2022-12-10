@@ -1,30 +1,13 @@
 // defining database models and methods
 const mongoose = require("mongoose");
-
-// const videoSchema = new mongoose.Schema({
-//     video_title: {
-//       type: String, 
-//       required: true
-//     },
-//     video_details: schema.Types.Mixed
-//     genre: {
-//       type: [String], 
-//       required: true
-//     },
-//     createdAt: { 
-//       type: Date, 
-//       required: true, 
-//       default: Date.now 
-//     }
-//   },{strict: false}
-// );
+const conn = require('./dbConnect').dbConnect;
 
 const videoSchema = new mongoose.Schema({
     video_title: {
       type: String,
       required: true
     },
-    video_details: schema.Types.Mixed,
+    video_details: mongoose.Schema.Types.Mixed,
     createdAt: { 
       type: Date, 
       required: true, 
@@ -33,7 +16,7 @@ const videoSchema = new mongoose.Schema({
   },{strict: false}
 );
 
-let Videos = mongoose.model("videos", videoSchema);
+let Videos = conn.model("videos", videoSchema);
 
 const insert = (doc) => {
   return Videos.create(doc);

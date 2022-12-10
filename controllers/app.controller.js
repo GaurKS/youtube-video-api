@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const dbConnect = require('./database/dbconnect');
+// const dbConnect = require('./database/dbconnect');
 const videoService = require('../services/video.service')
 require('dotenv').config();
 const app = express();
@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.use('/ping', (req, res) => {
-  res.send('Working Service');
+app.get('/ping', (req, res) => {
+  res.send('Job is running...');
 });
 
 app.get('/searchVideo', async (req, res) => {

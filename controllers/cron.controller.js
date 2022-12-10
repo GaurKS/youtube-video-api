@@ -1,5 +1,11 @@
 require('dotenv').config();
 const cron = require('node-cron');
-const YouTubeService = require('./service/youtubeService');
+const { startVideoFetching } = require('../services/video.service');
 
-module.exports = {job};
+const fetchVideoJob = () => {
+  cron.schedule(process.env.FETCH_INTERVAL, () => {
+    startVideoFetching();
+  });
+}
+
+module.exports = {fetchVideoJob};
