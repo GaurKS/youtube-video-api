@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const dbConnect = require('./database/dbconnect');
+const {job} = require('./controllers/cron.controller')
 require('dotenv').config();
 const app = express();
 
