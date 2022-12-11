@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "c2b91cea-d243-4618-826e-bc201d1c9ce6",
+		"name": "yt_data_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17353116"
+	},
+	"item": [
+		{
+			"name": "GetAllVideos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/getAllVideos?q=sea&limit=5&page=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"getAllVideos"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "sea"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Sample Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/getAllVideos?q=sea&limit=5&page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"getAllVideos"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "sea"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1769"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6e9-+1lTVk/LdyYe/KFzB7V6/DBzaY0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Dec 2022 18:34:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"6396225dea774fd7fe90ca00\",\n            \"query\": \"sea\",\n            \"video_title\": \"@Fishfam @fifa  @Viral @shorts #fishing #shorts #beach #sea #short #viral #tiktok\",\n            \"description\": \"\",\n            \"publishedAt\": \"2022-12-11T18:31:50Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/VLUNtc3IU5E/default.jpg\",\n            \"createdAt\": \"2022-12-11T18:33:01.423Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6396225dea774fd7fe90c9ff\",\n            \"query\": \"sea\",\n            \"video_title\": \"ఉవ్వెత్తున ఎగిసిపడే బీకర సముద్ర కెరటాల మధ్య చిగురుటాకు మాదిరిగా వణికిపోతూ.BIKARA SEA#subscribe 👌\",\n            \"description\": \"\",\n            \"publishedAt\": \"2022-12-11T18:31:44Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/BoCc4C14zQs/default.jpg\",\n            \"createdAt\": \"2022-12-11T18:33:01.423Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6396225dea774fd7fe90ca01\",\n            \"query\": \"sea\",\n            \"video_title\": \"Cute Sea Fish.\",\n            \"description\": \"\",\n            \"publishedAt\": \"2022-12-11T18:31:41Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/POZDlpgQmxc/default.jpg\",\n            \"createdAt\": \"2022-12-11T18:33:01.423Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6396225dea774fd7fe90ca04\",\n            \"query\": \"sea\",\n            \"video_title\": \"Das actionreiche Debüt💥dreier reudiger Piraten ☠ | LET&#39;S PLAY Sea of Thieves Deutsch\",\n            \"description\": \"seaofthieves #seaofthievespvp #letsplaydeutsch Das actionreiche Debüt  dreier reudiger Piraten ☠ | LET'S PLAY Sea of Thieves ...\",\n            \"publishedAt\": \"2022-12-11T18:31:11Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/mBH39vdpZxQ/default.jpg\",\n            \"createdAt\": \"2022-12-11T18:33:01.424Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6396225dea774fd7fe90c9fe\",\n            \"query\": \"sea\",\n            \"video_title\": \"A dangerous sea animal ☠️❓#shorts #viral #youtube\",\n            \"description\": \"\",\n            \"publishedAt\": \"2022-12-11T18:30:30Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/AXkyNc37JME/default.jpg\",\n            \"createdAt\": \"2022-12-11T18:33:01.421Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "SearchVideoByTitle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/getByTitle?title=sea",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"getByTitle"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "sea"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Sample Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/getByTitle?title=Thieves",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"getByTitle"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Thieves"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3872"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f20-Qvr7oPwUbieHs/avP5rrX7sqd8U\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Dec 2022 21:25:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"63964549dfff8cb0a1a49691\",\n            \"query\": \"sea\",\n            \"video_title\": \"sp013 21.9 monitor fov - sea of thieves\",\n            \"description\": \"Ha tetszik amit csinálok, kövess ha van kedved, dőlj hátra és érezd jól magad. live streamek, beszélgetés velünk: ...\",\n            \"publishedAt\": \"2022-12-11T20:46:08Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/WH5i1m-yOsE/default.jpg\",\n            \"createdAt\": \"2022-12-11T21:02:01.825Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"63964549dfff8cb0a1a4968e\",\n            \"query\": \"sea\",\n            \"video_title\": \"sp013 100 legend of the veil - sea of thieves\",\n            \"description\": \"Ha tetszik amit csinálok, kövess ha van kedved, dőlj hátra és érezd jól magad. live streamek, beszélgetés velünk: ...\",\n            \"publishedAt\": \"2022-12-11T20:45:47Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/tDmraxQ1iY8/default.jpg\",\n            \"createdAt\": \"2022-12-11T21:02:01.825Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"63964549dfff8cb0a1a49690\",\n            \"query\": \"sea\",\n            \"video_title\": \"sp013 a csatorna a játékra fókuszál - sea of thieves\",\n            \"description\": \"Ha tetszik amit csinálok, kövess ha van kedved, dőlj hátra és érezd jól magad. live streamek, beszélgetés velünk: ...\",\n            \"publishedAt\": \"2022-12-11T20:45:18Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/lb_UyCs4xmk/default.jpg\",\n            \"createdAt\": \"2022-12-11T21:02:01.825Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"63964549dfff8cb0a1a4968d\",\n            \"query\": \"sea\",\n            \"video_title\": \"sp013 hajók bemutatása - sea of thieves\",\n            \"description\": \"Ha tetszik amit csinálok, kövess ha van kedved, dőlj hátra és érezd jól magad. live streamek, beszélgetés velünk: ...\",\n            \"publishedAt\": \"2022-12-11T20:44:55Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/3j4KLRuBjfc/default.jpg\",\n            \"createdAt\": \"2022-12-11T21:02:01.825Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"63964549dfff8cb0a1a49696\",\n            \"query\": \"sea\",\n            \"video_title\": \"sp013 sose lépjetek ki altF4-el - sea of thieves\",\n            \"description\": \"Ha tetszik amit csinálok, kövess ha van kedved, dőlj hátra és érezd jól magad. live streamek, beszélgetés velünk: ...\",\n            \"publishedAt\": \"2022-12-11T20:44:08Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/Qr1HN5A90oE/default.jpg\",\n            \"createdAt\": \"2022-12-11T21:02:01.826Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"63964549dfff8cb0a1a49693\",\n            \"query\": \"sea\",\n            \"video_title\": \"Sea Of Thieves  3\",\n            \"description\": \"\",\n            \"publishedAt\": \"2022-12-11T20:43:52Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/nnAZu1DSifc/default.jpg\",\n            \"createdAt\": \"2022-12-11T21:02:01.826Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"63964549dfff8cb0a1a49694\",\n            \"query\": \"sea\",\n            \"video_title\": \"sp013 tall tale chain shot - sea of thieves\",\n            \"description\": \"Ha tetszik amit csinálok, kövess ha van kedved, dőlj hátra és érezd jól magad. live streamek, beszélgetés velünk: ...\",\n            \"publishedAt\": \"2022-12-11T20:43:45Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/84z9BYkEgYE/default.jpg\",\n            \"createdAt\": \"2022-12-11T21:02:01.826Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"63963b35b79a1563e2a790f6\",\n            \"query\": \"sea\",\n            \"video_title\": \"First Time Playing Sea Of Thieves LIVE 2\",\n            \"description\": \"Sea of Thieves is a 2018 action-adventure game developed by Rare and published by Microsoft Studios. The player assumes the ...\",\n            \"publishedAt\": \"2022-12-11T20:02:15Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/rgUlDQBLHKI/default.jpg\",\n            \"createdAt\": \"2022-12-11T20:19:01.864Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"63963b35b79a1563e2a79102\",\n            \"query\": \"sea\",\n            \"video_title\": \"Sea of Shenanigans!!! Pt. 2 (Sea of Thieves)\",\n            \"description\": \"Hope yall enjoy the long vid https://www.youtube.com/@hydroplaza5649 make sure to check his channel out and give him some ...\",\n            \"publishedAt\": \"2022-12-11T19:54:03Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/4SHU14w66D4/default.jpg\",\n            \"createdAt\": \"2022-12-11T20:19:01.874Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"63963b35b79a1563e2a79109\",\n            \"query\": \"sea\",\n            \"video_title\": \"A Titanic Ensemble ▶︎Sea of Thieves: Part 23\",\n            \"description\": \"In part 23 of Sea of Thieves with four members in our crew we get a little brave and sail near a player-manned sloop! In pirate ...\",\n            \"publishedAt\": \"2022-12-11T19:40:40Z\",\n            \"thumbnail\": \"https://i.ytimg.com/vi/mIMVIdG5LnA/default.jpg\",\n            \"createdAt\": \"2022-12-11T20:19:01.877Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Add_API_key",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/addKey/:key",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"addKey",
+						":key"
+					],
+					"variable": [
+						{
+							"key": "key",
+							"value": "AIzaSyA2qczuK9rk22XO51UcZYa78LiWt-y6hWk"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add_API_key",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/addKey/:key",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"addKey",
+								":key"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": "AIzaSyA2qczuK9rk22XO51UcZYa78LiWt-y6hWk"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "41"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"29-NK3NKwollAr+hLkWoUNDmTKOXBc\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Dec 2022 21:21:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"msg\": \"API key is added\"\n}"
+				}
+			]
+		}
+	]
+}

@@ -2,6 +2,7 @@ const axios = require('axios');
 const {searchByTitle, insertMany, getLastVideoTime, getAllVideos } = require('../database/video.model');
 require('dotenv').config();
 const querystring = require('querystring');
+const { getKey, updatedKey } = require('../database/key.model');
 
 const searchVideos = async (title, limit, page) => {
   let result = await searchByTitle(title, limit, page);
@@ -20,7 +21,21 @@ const searchAllVideos = async (searchQuery, limit, page) => {
 // method for cron job to fetch new videos at every 10 minutes
 const startVideoFetching = async () => {
   let lastVideoTime = await _getLastFetchedRecordTime();
-  _getMinedVideoData(lastVideoTime);
+  let key = await getKey();
+  console.log("Curr_Key: ", key.apiKey);
+  try {
+    _getMinedVideoData(lastVideoTime, key.apiKey);
+  } catch (err) {
+    console.log(err);
+    if (err.errors && err.errors.length > 0 && err.errors[0]['reason'] == 'quotaExceeded'){
+      let newKey = await updatedKey(key);
+      if ( newKey === null ){
+        console.log("All keys are exhausted. Add new keys to the DB");
+      }
+    }
+  }
+
+  
 };
 
 const _getLastFetchedRecordTime = async () => {
@@ -28,20 +43,19 @@ const _getLastFetchedRecordTime = async () => {
   if(lastVideoTimeObj) {
       console.log("last fetched from db : ", lastVideoTimeObj.publishedAt);
       let timeObject = new Date(lastVideoTimeObj.publishedAt)     
-      // console.log(timeObject)
       let newTime = new Date(timeObject.getTime() + (0.5)*60000); // creating a 30sec time window
-      // console.log(nw.toISOString())
       return (newTime.toISOString());
   }
   console.log("last fetched from env : ", process.env.YT_PUBLISHED_AFTER);
   return (process.env.YT_PUBLISHED_AFTER);
 };
 
-const _getMinedVideoData = (lastVideoTime) => {
+const _getMinedVideoData = (lastVideoTime, key) => {
   // GET parameters
   const parameters = {
       part: process.env.YT_PART,
-      key: process.env.YT_KEY,
+      // key: process.env.YT_KEY,
+      key: key,
       q: process.env.YT_SEARCH_QUERY,
       type: process.env.YT_TYPE,
       order: process.env.YT_ORDER,
