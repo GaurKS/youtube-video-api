@@ -3,11 +3,25 @@ const mongoose = require("mongoose");
 const conn = require('./dbConnect').dbConnect;
 
 const videoSchema = new mongoose.Schema({
+    query: {
+      type: String,
+      required: true
+    },
     video_title: {
       type: String,
       required: true
     },
-    video_details: mongoose.Schema.Types.Mixed,
+    description: {
+      type: String
+    },
+    publishedAt: {
+      type: String,
+      required: true
+    },
+    thumbnail: {
+      type: String,
+      required: true
+    },
     createdAt: { 
       type: Date, 
       required: true, 
@@ -27,21 +41,21 @@ const insertMany = (docsArray) => {
 }
 
 const getLastVideoTime = () => {
-  return Videos.findOne().sort({'data.publishTime': -1}).limit(1).select({'data.publishTime': 1}).lean();
+  return Videos.findOne().sort({'publishedAt': 'desc'}).limit(1).select({'publishedAt': 1});
 };
 
-function escapeRegex(text) {
-  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+const getAllVideos = (searchQuery, limit, page) => {
+  return Videos.find({'query': searchQuery}).sort({'publishedAt': 'desc'}).limit(limit).skip(limit*page).lean();
 };
 
-const smartSearchVideo = (video_title) => {
-  const regex = new RegExp(escapeRegex(video_title), 'gi');
-  return Videos.find({'data.title': regex}).lean();
-};
+const searchByTitle = (title, limit, page) => {
+  return Videos.find({ $text: { $search: title } }).sort({'publishedAt': 'desc'}).limit(limit).skip(limit*page).lean();
+}
 
 module.exports = {
   insert,
-  smartSearchVideo,
+  searchByTitle,
   insertMany,
-  getLastVideoTime
+  getLastVideoTime,
+  getAllVideos
 };

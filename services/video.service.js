@@ -1,41 +1,19 @@
 const axios = require('axios');
-const {smartSearchVideo, insertMany, getLastVideoTime } = require('../database/video.model');
+const {searchByTitle, insertMany, getLastVideoTime, getAllVideos } = require('../database/video.model');
 require('dotenv').config();
 const querystring = require('querystring');
 
-const searchVideo = async (videoTitle) => {
-  let result = await smartSearchVideo(videoTitle);
-  console.log("Result for video title: ", 
-              videoTitle," is : ", 
-              JSON.stringify(result, null, 4));
+const searchVideos = async (title, limit, page) => {
+  let result = await searchByTitle(title, limit, page);
+  console.log("Result for video title: ", title," is : ", JSON.stringify(result, null, 4));
   return result;
 };
 
-const fetchYtVideos = async (publishedAfter, publishedBefore) => {
-  const parameters = {
-    part: process.env.YT_PART,
-    key: process.env.YT_KEY,
-    q: process.env.YT_SEARCH_QUERY,
-    type: process.env.YT_TYPE,
-    order: process.env.YT_ORDER,
-    publishedAfter : publishedAfter,
-    publishedBefore : publishedBefore,
-    maxResults: process.env.YT_MAX_RESULT
-  }
-
-  const get_request_args = querystring.stringify(parameters);
-  let URL = process.env.YT_ENDPOINT + "?" + get_request_args;
-
-  const ytData = await axios.get(URL)
-  return ytData['data'];
-    // .then(function (response) {
-    //   _saveMinedVideoDetails(response, config.youtube.SEARCH_QUERY);
-    // })
-    // .catch(function (error) {
-    //   console.log("Error saving the response", error);
-    // });
-} 
-
+const searchAllVideos = async (searchQuery, limit, page) => {
+  let result = await getAllVideos(searchQuery, limit, page);
+  console.log("Result for all video query: ", searchQuery," is : ", JSON.stringify(result, null, 4));
+  return result;
+};
 
 
 
@@ -46,13 +24,17 @@ const startVideoFetching = async () => {
 };
 
 const _getLastFetchedRecordTime = async () => {
-  let lastVideoTime = null;
   let lastVideoTimeObj = await getLastVideoTime();
-  // console.log(lastVideoTimeObj.data);
-  if(lastVideoTimeObj && lastVideoTimeObj.data) {
-      lastVideoTime = lastVideoTimeObj.data.publishTime;
+  if(lastVideoTimeObj) {
+      console.log("last fetched from db : ", lastVideoTimeObj.publishedAt);
+      let timeObject = new Date(lastVideoTimeObj.publishedAt)     
+      // console.log(timeObject)
+      let newTime = new Date(timeObject.getTime() + (0.5)*60000); // creating a 30sec time window
+      // console.log(nw.toISOString())
+      return (newTime.toISOString());
   }
-  return (lastVideoTime || process.env.YT_PUBLISHED_AFTER);
+  console.log("last fetched from env : ", process.env.YT_PUBLISHED_AFTER);
+  return (process.env.YT_PUBLISHED_AFTER);
 };
 
 const _getMinedVideoData = (lastVideoTime) => {
@@ -69,32 +51,36 @@ const _getMinedVideoData = (lastVideoTime) => {
   const get_request_args = querystring.stringify(parameters);
 
   let URL = process.env.YT_ENDPOINT + "?" + get_request_args;
+  console.log("Req url : ", URL);
 
   axios.get(URL)
-      .then(function (response) {
-        _saveMinedVideoDetails(response, process.env.YT_SEARCH_QUERY);
-      })
-      .catch(function (error) {
-        console.log("Error saving the response", error);
-      });
+    .then(function (response) {
+      _saveMinedVideoDetails(response, process.env.YT_SEARCH_QUERY);
+    })
+    .catch(function (error) {
+      console.log("Error saving the response", error);
+    });
 }
 
-const _saveMinedVideoDetails = (response, video_title) => {
+const _saveMinedVideoDetails = (response, searchQuery) => {
   const docsArray = [];
-  response.data.items.forEach(function (element) {
-      const obj = {};
-      obj.video_title = video_title;
-      obj.data = element.snippet;
-      delete obj.data.channelTitle;
-      delete obj.data.liveBroadcastContent;
-      docsArray.push(obj);
-  });
+  response.data.items.forEach(
+    function (element) {
+        const obj = {};
+        obj.query = searchQuery; 
+        obj.video_title = element.snippet.title;
+        obj.description = element.snippet.description;
+        obj.publishedAt = element.snippet.publishedAt;
+        obj.thumbnail   = element.snippet.thumbnails.default.url;
+        docsArray.push(obj);
+      }
+    );
   console.log("Saving Video Data: ", JSON.stringify(docsArray, null, 4));
   insertMany(docsArray);
 }
 
 module.exports = {
-  fetchYtVideos,
-  searchVideo,
+  searchVideos,
+  searchAllVideos,
   startVideoFetching
 };
