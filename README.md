@@ -9,7 +9,7 @@ publishing date-time from YouTube for a given tag/search query in a paginated re
   descending order of published datetime.
 - A basic search API to search the stored videos using their title and description.
 
-# References:
+# References
 
 - [YouTube data v3 API](https://developers.google.com/youtube/v3/getting-started)
 
@@ -19,9 +19,9 @@ publishedAfter=<DATE_TIME>
   > Without publishedAfter, it will give you cached results which will be too old
  - [Google Cloud Console](https://console.cloud.google.com/apis/api/youtube.googleapis.com)
 
-# About Project:
+# About Project
 
-## Tech Stack:
+## Tech Stack
 - NodeJS
 - MongoDB
 - ExpressJS
@@ -48,7 +48,7 @@ DATABASE = 'mongodb+srv://<USER_NAME>:<PASSWORD>@cluster0.mzyu59k.mongodb.net/?r
 ```
 npm run start
 ```
-  Navigate to `http://localhost:8000`
+- Navigate to `http://localhost:8000`
 
 ## API Document endpoints
 
